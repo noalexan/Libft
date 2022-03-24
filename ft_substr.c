@@ -6,26 +6,37 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:19:17 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/23 15:19:19 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/03/24 14:25:30 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+static char	*ft_strndup(char *s, size_t n)
 {
-	char	*copy;
-	size_t	i;
+	char		*m;
+	size_t		i;
 
-	if (!s || start < 0 || len < 0)
+	m = malloc(n + 1);
+	if (!m)
 		return (NULL);
-	copy = ft_calloc(len, sizeof(char));
 	i = 0;
-	while (i <= len)
+	while (i < n)
 	{
-		copy[i] = s[start];
-		start++;
+		m[i] = s[i];
 		i++;
 	}
-	return (copy);
+	m[i] = 0;
+	return (m);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	if (!s)
+		return (0);
+	if (start >= ft_strlen((char *) s) || !s)
+		return (ft_calloc(1, 1));
+	if (start + len > ft_strlen((char *) s))
+		return (ft_strdup((char *) &s[start]));
+	return (ft_strndup((char *) &s[start], len));
 }

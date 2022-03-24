@@ -1,22 +1,67 @@
-CC = gcc
-CFLAGS = -Werror -Wextra -Wall
-SRCS = $(wildcard ft_*.c)
-OBJS = $(SRCS:.c=.o)
-NAME = libft.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
+#    Updated: 2022/03/24 16:32:41 by noalexan         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CC		= gcc
+CFLAGS	= -Werror -Wextra -Wall
+
+NAME	= libft.a
+
+SRCS	=	ft_atoi.c \
+			ft_calloc.c \
+			ft_isalpha.c \
+			ft_isdigit.c \
+			ft_memchr.c \
+			ft_memcpy.c \
+			ft_memset.c \
+			ft_strdup.c \
+			ft_strlcat.c \
+			ft_strlen.c \
+			ft_strnstr.c \
+			ft_substr.c \
+			ft_toupper.c \
+			ft_bzero.c \
+			ft_isalnum.c \
+			ft_isascii.c \
+			ft_isprint.c \
+			ft_memcmp.c  \
+			ft_memmove.c \
+			ft_strchr.c \
+			ft_strjoin.c \
+			ft_strlcpy.c \
+			ft_strncmp.c \
+			ft_strrchr.c \
+			ft_tolower.c \
+			ft_strtrim.c \
+
+OBJS	= $(SRCS:.c=.o)
+
+RM		= rm
+AR		= ar rc
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I.
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(CFLAGS) -c $(SRCS)
-	ar r $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 	ranlib $(NAME)
 
 clean:
-	rm $(OBJS)
+	$(RM) $(OBJS)
 
-fclean:
-	rm -f $(OBJS) $(NAME)
+fclean: clean
+	$(RM) -f $(NAME)
 
-re: fclean $(NAME)
+re: fclean all
 
-.PHONY: all $(NAME) clean fclean re
+.PHONY: all clean fclean re

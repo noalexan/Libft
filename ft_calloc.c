@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:57:52 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/23 13:07:17 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/03/24 10:57:01 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	*ft_calloc(size_t elementCount, size_t elementSize)
 	result = malloc(elementCount * elementSize);
 	if (!result)
 		return (NULL);
-	ft_memset(result, 0, elementCount);
+	bzero(result, (elementCount * elementSize));
 	return (result);
 }

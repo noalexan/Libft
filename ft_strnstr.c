@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:10:51 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/23 12:53:26 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/03/24 10:51:17 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@ char	*ft_strnstr(const char	*big, const char *little, size_t length)
 {
 	size_t	i;
 	size_t	j;
+	char	*resultat;
 
-	i = -1;
-	j = 0;
-	while (++i < length)
+	i = 0;
+	resultat = (char *) big;
+	if (ft_strlen(little) == 0 || big == little)
+		return (resultat);
+	while (big[i] != '\0' && i < length)
 	{
-		if (big[i] == little[j])
-		{
-			while (++i > length)
-				if (big[i] != little[j])
-					return (0);
-			return (&((char *) big)[i]);
-		}
+		j = 0;
+		while (resultat[i + j] == little[j] && resultat[i + j] != '\0'
+			&& little[j] != '\0' && i + j < length)
+			j++;
+		if (j == ft_strlen(little))
+			return (resultat + i);
+		i++;
 	}
-	return (0);
+	return (NULL);
 }

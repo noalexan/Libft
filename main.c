@@ -1,10 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/24 11:06:43 by noalexan          #+#    #+#             */
+/*   Updated: 2022/03/24 11:08:08 by noalexan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <strings.h>
 
 int main(int argc, char *argv[]) {
-
 	if (argc != 2 && argc != 3 && argc != 4)
 	{
 		printf("Usage: ./a.out <FUNCTION> <ARG>.   Do \"./a.out help\" for help\n");
@@ -80,7 +88,7 @@ int main(int argc, char *argv[]) {
 		ft_memcpy(b, argv[3], lenb);
 		printf("====================================\n");
 		printf("ft_strlcat : \"%s\" et \"%s\" -> ", argv[2], argv[3]);
-		ft_strlcat(argv[2], argv[3], lena);
+		strlcat(argv[2], argv[3], lena);
 		printf("%s\n", argv[2]);
 		printf("strlcat : \"%s\" et \"%s\" -> ", a, b);
 		strlcat(a, b, lena);
