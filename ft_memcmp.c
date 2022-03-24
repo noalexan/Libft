@@ -1,0 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/23 09:52:15 by noalexan          #+#    #+#             */
+/*   Updated: 2022/03/23 10:10:58 by noalexan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_memcmp( const void *pointer1, const void *pointer2, size_t size)
+{
+	unsigned long	position;
+	int				delta;
+
+	position = -1;
+	while (++position < size)
+	{
+		delta = *(unsigned char *)pointer1++ - *(unsigned char *)pointer2++;
+		if (delta)
+			return (delta);
+	}
+	return (0);
+}
