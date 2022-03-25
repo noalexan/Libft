@@ -6,13 +6,13 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 16:05:48 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/24 16:20:26 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/03/25 14:28:21 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ecriture2(char *result, const char *s1, const char *s2)
+static char	*ecriture2(char *result, const char *s1, const char *s2)
 {
 	size_t	i;
 	size_t	j;
@@ -34,7 +34,7 @@ char	*ecriture2(char *result, const char *s1, const char *s2)
 	return (result);
 }
 
-char	*ecriture(char *result, const char *s1, const char *s2)
+static char	*ecriture(char *result, const char *s1, const char *s2)
 {
 	size_t	i;
 	size_t	j;

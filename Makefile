@@ -6,7 +6,7 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/03/24 16:32:41 by noalexan         ###   ########.fr        #
+#    Updated: 2022/03/25 12:12:07 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,26 +41,27 @@ SRCS	=	ft_atoi.c \
 			ft_strrchr.c \
 			ft_tolower.c \
 			ft_strtrim.c \
+			ft_split.c \
 
 OBJS	= $(SRCS:.c=.o)
 
-RM		= rm
+RM		= rm -rf
 AR		= ar rc
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I.
 
-all: $(NAME)
-
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 	ranlib $(NAME)
+
+all: $(NAME)
 
 clean:
 	$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 

@@ -6,11 +6,11 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 09:51:42 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/23 09:55:02 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/03/25 14:29:05 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(char a)
+static int	ft_isspace(char a)
 {
 	if ((a == ' ') || (a == '\t') || (a == '\v') || (a == '\n')
 		|| (a == '\r') || (a == '\f'))
