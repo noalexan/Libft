@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noahalexandre <noahalexandre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 09:52:41 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/27 11:09:38 by noahalexand      ###   ########.fr       */
+/*   Created: 2022/03/23 09:52:05 by noalexan          #+#    #+#             */
+/*   Updated: 2022/03/27 15:32:15 by noahalexand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *first, const char *second, size_t length)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-
-	i = -1;
-	// if (!first || !second)
-	// 	return ((int) NULL);
-	while (++i < length)
-		if (first[i] != second[i])
-			return ((int) first[i] - (int) second[i]);
-	return (0);
+	ft_putstr_fd(ft_itoa(n), fd);
 }

@@ -5,94 +5,80 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 11:55:19 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/25 14:26:53 by noalexan         ###   ########.fr       */
+/*   Created: 2022/03/25 17:13:03 by noalexan          #+#    #+#             */
+/*   Updated: 2022/03/25 17:13:09 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_wordcounter(const char *string, const char separator)
+int	counter(const char *str, char c)
 {
 	int	i;
-	int	j;
-
-	i = -1;
-	j = 0;
-	while (string[++i])
-		if (string[i] == separator && string[i - 1] != separator)
-			j++;
-	return (j + 1);
-}
-
-static int	ft_sizeofword(int i, const char *string, const char separator)
-{
-	int	len;
-	int	j;
-
-	j = 0;
-	while (string[++i])
-	{
-		len = 0;
-		if (string[i] == separator && string[i - 1] != separator)
-			j++;
-	}
-	printf("%d\n", j);
-	return (j);
-}
-
-static char	**ft_callocword(char **split, const char *string, const char separator)
-{
-	int	i;
+	int	trigger;
 
 	i = 0;
-	while (i <= ft_wordcounter(string, separator))
+	trigger = 0;
+	if (!str)
+		return (0);
+	while (*str)
 	{
-		split[i] = ft_calloc(ft_sizeofword(i, string, separator) + 1, sizeof(char));
-		printf("split[%d] malloced\n", i);
-	}
-	return (split);
-}
-
-char	**ft_split(const char *string, char separator)
-{
-	char	**split;
-	int		i;
-	int		j;
-	int		l;
-
-	if (!string)
-		return (NULL);
-	split = ft_calloc(ft_wordcounter(string, separator) + 1, sizeof(char *));
-	if (split == NULL)
-		return (NULL);
-	split = ft_callocword(split, string, separator);
-	printf("\nCALLOC: done\n");
-	i = 0;
-	l = 0;
-	j = 0;
-	printf("STRING: \"%s\" -- SEPARATOR: '%c'\n", string, separator);
-	printf("--- WHILE START ---\n");
-	while (string[i])
-	{
-		printf("'%c' index (%d)\n", string[i], i);
-		if (string[i] == separator)
+		if (*str != c && trigger == 0)
 		{
-			split[j][l] = '\0';
-			j++;
-			l = 0;
-			printf("TAB FINISHED: \"%s\" (split[%d])\n", split[j - 1], j - 1);
-			printf("- NEW TAB -\n");
+			trigger = 1;
+			i++;
 		}
-		else
+		else if (*str == c)
+			trigger = 0;
+		str++;
+	}
+	return (i);
+}
+
+char	*duplicator(const char *str, int start, int end)
+{
+	int		i;
+	char	*word;
+
+	i = 0;
+	word = malloc((end - start + 1) * sizeof(char));
+	if (!word || !str)
+		return (0);
+	while (start < end)
+	{
+		word[i] = str[start];
+		i++;
+		start++;
+	}
+	word[i] = '\0';
+	return (word);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	size_t	i;
+	size_t	j;
+	int		trigger;
+	char	**result;
+
+	i = 0;
+	j = 0;
+	trigger = -1;
+	result = malloc((counter(s, c) + 1) * sizeof(char *));
+	if (!s || !result)
+		return (0);
+	while (i <= ft_strlen(s))
+	{	
+		if (s[i] != c && trigger < 0)
+			trigger = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && trigger >= 0)
 		{
-			printf("write '%c' into split[%d][%d]\n", string[i], j, l);
-			split[j][l] = string[i];
-			l++;
-			printf("write done\n");
+			result[j] = duplicator(s, trigger, i);
+			j++;
+			trigger = -1;
 		}
 		i++;
 	}
-	printf("---  WHILE END  ---\n");
-	return (split);
+	result[j] = 0;
+	return (result);
 }
