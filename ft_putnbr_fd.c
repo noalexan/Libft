@@ -3,16 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noahalexandre <noahalexandre@student.42    +#+  +:+       +#+        */
+/*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 09:52:05 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/27 15:32:15 by noahalexand      ###   ########.fr       */
+/*   Updated: 2022/03/28 10:03:12 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int nb, int fd)
 {
-	ft_putstr_fd(ft_itoa(n), fd);
+	if (nb == -2147483648)
+	{
+		ft_putnbr_fd(-21474, fd);
+		ft_putnbr_fd(83648, fd);
+	}
+	else if (nb < 0)
+	{
+		write(fd, "-", 1);
+		ft_putnbr_fd(nb * -1, fd);
+	}
+	else if (nb >= 10)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putnbr_fd(nb % 10, fd);
+	}
+	else
+	{
+		nb += '0';
+		write(fd, &nb, 1);
+	}
 }

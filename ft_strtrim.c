@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:23:05 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/25 14:27:11 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:18:58 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 	int		end;
 	int		i;
 
-	result = ft_calloc(ft_strlen(s1) + 2, sizeof(char));
+	result = ft_calloc(ft_strlen(s1) + 1, sizeof(char));
 	if (result == NULL)
 		return (NULL);
 	start = stringstartskip(&start, (char *) s1, (char *) set);
