@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 09:52:44 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/28 13:40:49 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/03/28 14:45:05 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strrchr(const char *string, int searchedChar)
 		return (NULL);
 	i = ft_strlen(string) + 1;
 	while (--i > 0)
-		if (string[i] == searchedChar)
+		if (((unsigned char *) string)[i] == (unsigned char) searchedChar)
 			return (&((char *) string)[i]);
 	if (string[i] == searchedChar)
 		return (&((char *) string)[i]);
