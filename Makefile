@@ -6,7 +6,7 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/03/28 13:29:43 by noalexan         ###   ########.fr        #
+#    Updated: 2022/03/28 18:42:00 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,17 +50,22 @@ SRCS	=	ft_atoi.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c \
 
+SRCSB	=	
+
 OBJS	= $(SRCS:.c=.o)
+OBJSB	= $(SRCSB:.c=.o)
 
 RM		= rm -rf
-AR		= ar rc
+AR		= ar rcs
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I.
 
+$(shell touch bonus): $(OBJS) $(OBJSB)
+	$(AR) $(NAME) $(OBJS) $(OBJSB)
+
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
-	ranlib $(NAME)
 
 all: $(NAME)
 
