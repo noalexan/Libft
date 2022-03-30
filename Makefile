@@ -6,7 +6,7 @@
 #    By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 13:22:13 by noalexan          #+#    #+#              #
-#    Updated: 2022/03/29 10:26:20 by noalexan         ###   ########.fr        #
+#    Updated: 2022/03/30 09:42:22 by noalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,26 +50,13 @@ SRCS	=	ft_atoi.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c \
 
-SRCSB	=	ft_lstnew.c \
-			ft_lstadd_front.c \
-			ft_lstadd_back.c \
-			ft_lstsize.c \
-			ft_lstlast.c \
-			ft_lstdelone.c \
-			ft_lstclear.c \
-
 OBJS	= $(SRCS:.c=.o)
-OBJSB	= $(SRCSB:.c=.o)
 
 RM		= rm -rf
 AR		= ar rcs
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I.
-
-bonus: $(NAME) $(OBJSB)
-	$(AR) $(NAME) $(OBJSB)
-	touch bonus
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
