@@ -6,7 +6,7 @@
 /*   By: noahalexandre <noahalexandre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:23:05 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/30 09:29:52 by noahalexand      ###   ########.fr       */
+/*   Updated: 2022/03/30 09:32:03 by noahalexand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-size_t	i;
+	size_t	i;
 
 	if (!s1 || !set)
 		return (0);
