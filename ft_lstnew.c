@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 09:52:44 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/29 10:02:19 by noalexan         ###   ########.fr       */
+/*   Created: 2022/03/29 08:40:03 by noalexan          #+#    #+#             */
+/*   Updated: 2022/03/29 08:51:34 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *string, int searchedChar)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	i;
+	t_list	*lst;
 
-	if (!string)
-		return (NULL);
-	i = ft_strlen(string) + 1;
-	while (--i > 0)
-		if (((unsigned char *) string)[i] == (unsigned char) searchedChar)
-			return (&((char *) string)[i]);
-	if (((unsigned char *) string)[i] == (unsigned char) searchedChar)
-		return (&((char *) string)[i]);
-	return (NULL);
+	lst = malloc(sizeof(t_list));
+	lst->content = content;
+	lst->next = NULL;
+	return (lst);
 }

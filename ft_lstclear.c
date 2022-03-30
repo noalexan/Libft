@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noahalexandre <noahalexandre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 16:23:05 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/30 09:29:52 by noahalexand      ###   ########.fr       */
+/*   Created: 2022/03/29 10:23:35 by noalexan          #+#    #+#             */
+/*   Updated: 2022/03/30 08:49:18 by noahalexand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-size_t	i;
+	int		i;
+	t_list	*tmp;
+	t_list	*value;
 
-	if (!s1 || !set)
-		return (0);
-	while (*s1 && ft_strchr(set, *s1))
-		s1++;
-	i = ft_strlen(s1);
-	while (i > 0 && ft_strchr(set, s1[i]))
-		i--;
-	return (ft_substr(s1, 0, i + 1));
+	i = -1;
+	tmp = lst;
+	while (tmp != NULL && ++i)
+	{
+		ft_lstdelone(tmp, del);
+		tmp = tmp->next;
+	}
 }

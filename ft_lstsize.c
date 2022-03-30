@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 09:52:44 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/29 10:02:19 by noalexan         ###   ########.fr       */
+/*   Created: 2022/03/29 08:56:33 by noalexan          #+#    #+#             */
+/*   Updated: 2022/03/29 09:50:27 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *string, int searchedChar)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	i;
+	int		i;
 
-	if (!string)
-		return (NULL);
-	i = ft_strlen(string) + 1;
-	while (--i > 0)
-		if (((unsigned char *) string)[i] == (unsigned char) searchedChar)
-			return (&((char *) string)[i]);
-	if (((unsigned char *) string)[i] == (unsigned char) searchedChar)
-		return (&((char *) string)[i]);
-	return (NULL);
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

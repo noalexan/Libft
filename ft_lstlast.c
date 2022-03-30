@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 09:52:44 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/29 10:02:19 by noalexan         ###   ########.fr       */
+/*   Created: 2022/03/29 09:02:08 by noalexan          #+#    #+#             */
+/*   Updated: 2022/03/29 09:04:36 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *string, int searchedChar)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t	i;
+	int		i;
+	t_list	*tmp;
+	t_list	*value;
 
-	if (!string)
-		return (NULL);
-	i = ft_strlen(string) + 1;
-	while (--i > 0)
-		if (((unsigned char *) string)[i] == (unsigned char) searchedChar)
-			return (&((char *) string)[i]);
-	if (((unsigned char *) string)[i] == (unsigned char) searchedChar)
-		return (&((char *) string)[i]);
-	return (NULL);
+	i = -1;
+	tmp = lst;
+	while (tmp != NULL && ++i)
+	{
+		value = tmp;
+		tmp = tmp->next;
+	}
+	return (value);
 }

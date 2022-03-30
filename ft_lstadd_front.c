@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 09:52:44 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/29 10:02:19 by noalexan         ###   ########.fr       */
+/*   Created: 2022/03/29 08:48:56 by noalexan          #+#    #+#             */
+/*   Updated: 2022/03/29 09:43:37 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *string, int searchedChar)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t	i;
-
-	if (!string)
-		return (NULL);
-	i = ft_strlen(string) + 1;
-	while (--i > 0)
-		if (((unsigned char *) string)[i] == (unsigned char) searchedChar)
-			return (&((char *) string)[i]);
-	if (((unsigned char *) string)[i] == (unsigned char) searchedChar)
-		return (&((char *) string)[i]);
-	return (NULL);
+	new->next = *lst;
+	*lst = new;
 }
