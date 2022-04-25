@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:19:17 by noalexan          #+#    #+#             */
-/*   Updated: 2022/03/24 14:25:30 by noalexan         ###   ########.fr       */
+/*   Updated: 2022/04/19 12:46:26 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (0);
 	if (start >= ft_strlen((char *) s) || !s)
-		return (ft_calloc(1, 1));
+		return (malloc(sizeof(char) * 1));
 	if (start + len > ft_strlen((char *) s))
 		return (ft_strdup((char *) &s[start]));
 	return (ft_strndup((char *) &s[start], len));
