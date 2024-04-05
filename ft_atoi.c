@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
 static int	ft_isspace(char a)
 {
@@ -43,8 +44,5 @@ int	ft_atoi(const char *nptr)
 		value += nptr[i] - 48;
 		i++;
 	}
-	if (!(nptr[i] <= '0') || !(nptr[i] <= '9')
-		|| value > INT_MAX || value < INT_MIN)
-		err();
 	return ((int) value * sig);
 }
