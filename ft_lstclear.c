@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 07:46:04 by noalexan          #+#    #+#             */
-/*   Updated: 2024/12/15 03:52:43 by noalexan         ###   ########.fr       */
+/*   Created: 2024/12/15 04:20:37 by noalexan          #+#    #+#             */
+/*   Updated: 2024/12/15 04:26:11 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+#include "libft.h"
+
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	if ('a' <= c && c <= 'z')
-		return (c - 32);
-	return (c);
+	t_list	*tmp;
+
+	if (lst)
+	{
+		while (*lst)
+		{
+			tmp = *lst;
+			*lst = (*lst)->next;
+			ft_lstdelone(tmp, del);
+		}
+	}
 }

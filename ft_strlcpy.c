@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 05:49:45 by noalexan          #+#    #+#             */
-/*   Updated: 2024/06/07 23:31:27 by noalexan         ###   ########.fr       */
+/*   Updated: 2024/12/02 20:58:41 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dsize)
 	size_t	i;
 
 	i = 0;
-	while (src[i] && i < dsize - 1)
+	while (src[i] && i < dsize)
 	{
 		dst[i] = src[i];
 		i++;

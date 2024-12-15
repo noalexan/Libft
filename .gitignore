@@ -1,3 +1,7 @@
 libft.a
 *.o
 *.a
+*.so
+
+libft-unit-test/
+libftTester/
