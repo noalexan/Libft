@@ -1,6 +1,6 @@
 NAME=libft
 
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS=-fPIC -Wall -Wextra -Werror
 
 OBJ=\
 	ft_isalpha.o \
