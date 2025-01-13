@@ -41,7 +41,8 @@ BONUS_OBJ=\
 all: $(NAME).a $(NAME).so
 
 .PHONY: bonus
-bonus: $(NAME)_bonus.a $(NAME)_bonus.so
+bonus:
+	@make --no-print-directory OBJ="$(OBJ) $(BONUS_OBJ)"
 
 .PHONY: shared
 shared: $(NAME).so
@@ -52,14 +53,8 @@ static: $(NAME).a
 $(NAME).a: $(OBJ)
 	$(AR) rcs $@ $(OBJ)
 
-$(NAME)_bonus.a: $(OBJ) $(BONUS_OBJ)
-	$(AR) rcs $@ $(OBJ) $(BONUS_OBJ)
-
 $(NAME).so: $(OBJ)
 	$(CC) $(LDFLAGS) -shared -o $@ $(OBJ) $(LDLIBS)
-
-$(NAME)_bonus.so: $(OBJ) $(BONUS_OBJ)
-	$(CC) $(LDFLAGS) -shared -o $@ $(OBJ) $(BONUS_OBJ) $(LDLIBS)
 
 .PHONY: clean
 clean:
@@ -71,3 +66,5 @@ fclean: clean
 
 .PHONY: re
 re: fclean all
+
+.NOTPARALLEL: re fclean
