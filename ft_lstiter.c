@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 04:28:48 by noalexan          #+#    #+#             */
-/*   Updated: 2024/12/15 04:30:33 by noalexan         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:39:31 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (f) {
+	if (f)
+	{
 		while (lst)
 		{
 			f(lst->content);
