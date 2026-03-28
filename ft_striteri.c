@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 12:38:35 by noalexan          #+#    #+#             */
-/*   Updated: 2026/03/28 20:25:25 by noalexan         ###   ########.fr       */
+/*   Created: 2026/03/28 22:06:13 by noalexan          #+#    #+#             */
+/*   Updated: 2026/03/28 22:09:39 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	size_t	i;
 
 	i = 0;
-	while (i < n)
-	{
-		if (((unsigned char *) s)[i] == (unsigned char) c)
-			return ((unsigned char *) s + i);
-		i++;
-	}
-	return (NULL);
+	if (s)
+		while (*s)
+			f(i++, s++);
 }

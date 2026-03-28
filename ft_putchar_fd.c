@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 12:38:35 by noalexan          #+#    #+#             */
-/*   Updated: 2026/03/28 20:25:25 by noalexan         ###   ########.fr       */
+/*   Created: 2026/03/28 22:11:34 by noalexan          #+#    #+#             */
+/*   Updated: 2026/03/28 22:12:58 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <unistd.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		if (((unsigned char *) s)[i] == (unsigned char) c)
-			return ((unsigned char *) s + i);
-		i++;
-	}
-	return (NULL);
+	write(fd, &c, 1);
 }

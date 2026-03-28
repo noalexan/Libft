@@ -1,7 +1,36 @@
+# Build directories
+build/
+.cache/
+
+# Generated files
+compile_commands.json
 libft.a
+
+# Object files and binaries
 *.o
 *.a
 *.so
+*.dylib
+a.out
+*~
 
-libft-unit-test/
-libftTester/
+# Dependencies
+deps/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Debug and core dumps
+core
+vgcore.*
+core.*
+
+# Makefiles
+Makefile~

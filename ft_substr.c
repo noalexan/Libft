@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 12:38:35 by noalexan          #+#    #+#             */
-/*   Updated: 2026/03/28 20:25:25 by noalexan         ###   ########.fr       */
+/*   Created: 2026/03/28 19:43:34 by noalexan          #+#    #+#             */
+/*   Updated: 2026/03/28 21:58:23 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	size_t	i;
+	const char	*base_ptr = s + start;
+	char *const	nstr = malloc(len + 1);
 
-	i = 0;
-	while (i < n)
-	{
-		if (((unsigned char *) s)[i] == (unsigned char) c)
-			return ((unsigned char *) s + i);
-		i++;
-	}
-	return (NULL);
+	if (!nstr)
+		return (NULL);
+	ft_memcpy(nstr, base_ptr, len);
+	nstr[len] = 0;
+	return (nstr);
 }
