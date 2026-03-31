@@ -6,44 +6,54 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 21:33:30 by noalexan          #+#    #+#             */
-/*   Updated: 2026/03/28 22:21:44 by noalexan         ###   ########.fr       */
+/*   Updated: 2026/03/31 03:53:15 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
 #include "libft.h"
+#include <stdlib.h>
 
-static size_t	ft_compute_len(int n)
+static size_t	ft_numlen(long n)
 {
-	if (n)
-		return (ft_compute_len(n / 10) + 1);
-	return (1);
-}
+	size_t	len;
 
-static void	ft_perform_itoa(char **str, int n)
-{
-	static const char	base[] = "0123456789";
-
-	if (n < 10)
-		**str = base[n];
-	else
+	len = 0;
+	if (n <= 0)
 	{
-		ft_perform_itoa(str, n / 10);
-		(*str)++;
-		ft_perform_itoa(str, n % 10);
+		len++;
+		n = -n;
 	}
+	while (n > 0)
+	{
+		len++;
+		n /= 10;
+	}
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	const size_t	len = ft_compute_len(n);
-	char *const		nstr = malloc(len + 1);
-	char			*ptr;
+	long	num;
+	size_t	len;
+	char	*str;
 
-	if (!nstr)
+	num = n;
+	len = ft_numlen(num);
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
-	ptr = nstr;
-	ft_perform_itoa(&ptr, n);
-	return (nstr);
+	str[len] = 0;
+	if (num == 0)
+		str[0] = '0';
+	else if (num < 0)
+	{
+		str[0] = '-';
+		num = -num;
+	}
+	while (num > 0)
+	{
+		str[--len] = (num % 10) + '0';
+		num /= 10;
+	}
+	return (str);
 }

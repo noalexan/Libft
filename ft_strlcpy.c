@@ -6,7 +6,7 @@
 /*   By: noalexan <noalexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 05:49:45 by noalexan          #+#    #+#             */
-/*   Updated: 2024/12/02 20:58:41 by noalexan         ###   ########.fr       */
+/*   Updated: 2026/03/31 04:44:06 by noalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dsize)
 {
-	size_t	i;
+	const size_t	len = ft_strlen (src);
 
-	i = 0;
-	while (src[i] && i < dsize)
+	if (len >= dsize)
 	{
-		dst[i] = src[i];
-		i++;
+		if (dsize > 0)
+		{
+			ft_memcpy (dst, src, dsize);
+			dst[dsize - 1] = 0;
+		}
 	}
-	dst[i] = 0;
-	return (i);
+	else
+		ft_memcpy (dst, src, len + 1);
+	return (len);
 }

@@ -1,6 +1,6 @@
 NAME=libft.a
 
-CFLAGS=-fPIC -Wall -Wextra # -Werror
+CFLAGS=-fPIC -Wall -Wextra -Werror
 
 BUILDDIR=build
 
